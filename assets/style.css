@@ -1,0 +1,78 @@
+#container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  justify-content: center;
+}
+
+.cartao {
+  width: 200px;
+  height: 300px;
+  perspective: 1000px;
+  cursor: pointer;
+  transition: transform 0.6s ease;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.cartao.fullscreen {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(3);
+  z-index: 999;
+  width: 200px;
+  height: 300px;
+}
+
+/* Conteúdo 3D */
+.cartao__conteudo {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+}
+
+/* FACES – agora em ângulos diferentes */
+.cartao__frente {
+  transform: rotateY(0deg);
+}
+
+.cartao__verso {
+  transform: rotateY(120deg);
+}
+
+.cartao__resposta {
+  transform: rotateY(240deg);
+}
+
+/* Classe que rotaciona o conteúdo */
+.cartao.rot0 .cartao__conteudo {
+  transform: rotateY(0deg);
+}
+
+.cartao.rot120 .cartao__conteudo {
+  transform: rotateY(-120deg);
+}
+
+.cartao.rot240 .cartao__conteudo {
+  transform: rotateY(-240deg);
+}
+
+/* Aparência */
+.cartao__face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.cartao__face img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
